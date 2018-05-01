@@ -1,0 +1,30 @@
+{
+  "name": "@pinyin/types",
+  "version": "0.0.1",
+  "description": "Type alises",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublishOnly": "rm -r dist && npx tsc",
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinyin/types.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Bo Bao <bob432091@gmail.com> (https://github.com/pinyin)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinyin/types/issues"
+  },
+  "homepage": "https://github.com/pinyin/types#readme",
+  "devDependencies": {
+    "typescript": "^2.8.3"
+  }
+}
