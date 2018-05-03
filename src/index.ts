@@ -3,3 +3,6 @@ export type ms = number
 export type rad = number
 export type pct = number
 export type ratio = number
+
+export {InstanceOf} from './InstanceOf'
+export {RequiredNonNull} from './RequiredNonNull'
