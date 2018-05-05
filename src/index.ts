@@ -6,3 +6,4 @@ export type ratio = number
 
 export {InstanceOf} from './InstanceOf'
 export {RequiredNonNull} from './RequiredNonNull'
+export {EventHandler} from './EventHandler'
