@@ -10,17 +10,10 @@
     "importHelpers": true,
     "noEmitHelpers": true,
     "lib": [
-      "es6",
-      "dom"
+      "es6"
     ]
   },
-  "exclude": [
-    "node_modules",
-    ".idea",
-    ".vscode",
-    "build",
-    "dist",
-    "**/*.spec.*",
-    "**/*.test.*"
+  "include": [
+    "./index.ts"
   ]
 }
