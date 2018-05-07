@@ -1,3 +1,3 @@
-export type Discriminated<T extends object, K extends keyof T = keyof T> = {
-    [k in K]: { type: k } & T[k]
+export type Discriminated<T extends {[Key in K]: object}, K extends keyof T = keyof T> = {
+    [Key in K]: { type: Key } & T[Key]
 }[K]
