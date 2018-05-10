@@ -5,6 +5,8 @@ export type pct = number
 export type ratio = number
 
 export {AllNonNullable} from './src/AllNonNullable'
+export {Discriminate} from './src/Discriminate'
+export {DiscriminateByMap} from './src/DiscriminateByMap'
 export {Discriminated} from './src/Discriminated'
 export {EventHandler} from './src/EventHandler'
 export {EventHandlers} from './src/EventHandlers'
