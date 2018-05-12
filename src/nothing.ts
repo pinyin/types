@@ -1,2 +1,2 @@
-export type nothing = never | null | undefined | void
+export type nothing = never | null | undefined
 export const nothing = null
