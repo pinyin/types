@@ -1,6 +1,6 @@
 {
   "name": "@pinyin/types",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Useful types",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/pinyin/types#readme",
   "devDependencies": {
-    "typescript": "^2.8.3"
+    "typescript": "^2.9.0-dev.20180518"
   }
 }
