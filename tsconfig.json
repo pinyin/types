@@ -10,6 +10,7 @@
     "importHelpers": true,
     "noEmitHelpers": true,
     "noErrorTruncation": true,
+    "noEmitOnError": true,
     "lib": [
       "es6",
       "dom"
