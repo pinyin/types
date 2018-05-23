@@ -1,5 +1,5 @@
 {
-  "name": "@pinyin/jypes",
+  "name": "@pinyin/types",
   "version": "0.0.17",
   "description": "Useful types",
   "main": "dist/index.js",
