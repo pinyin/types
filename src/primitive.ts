@@ -1,2 +1,2 @@
-export type primitive = boolean | null | undefined | number | string | symbol
+export type primitive = boolean | number | string | symbol
 
