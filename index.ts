@@ -5,6 +5,7 @@ export type pct = number
 export type ratio = number
 
 export {AllNonNullable} from './src/AllNonNullable'
+export {Equals} from './src/Equals'
 export {EventHandler} from './src/EventHandler'
 export {EventHandlers} from './src/EventHandlers'
 export {InstanceOf} from './src/InstanceOf'
@@ -19,7 +20,6 @@ export {ShapeOf} from './src/ShapeOf'
 export {something} from './src/something'
 export {Tag}from './src/Tag'
 export {Tagged} from './src/Tagged'
-export {TaggedByMap} from './src/TaggedByMap'
 export {TagKey}from './src/TagKey'
 export {TagMap}from './src/TagMap'
 export {tagMatches} from './src/tagMatches'
