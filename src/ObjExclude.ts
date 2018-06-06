@@ -1,7 +1,4 @@
-export type ObjExclude<A extends object,
-    B extends object,
-    K extends Exclude<keyof A, keyof B> = Exclude<keyof A, keyof B>> =
-    { [Key in K]: A[K] } extends never ?
-        {} :
-        { [Key in K]: A[K] }
+export type ObjExclude<A extends object, B extends object, KB extends keyof B = keyof B> = A & {
+    [key in KB]?: never
+}
 
