@@ -4,7 +4,7 @@ export type rad = number
 export type pct = number
 export type ratio = number
 
-export {AllNonNullable} from './src/AllNonNullable'
+export {DeepNonNullable} from './src/DeepNonNullable'
 export {Equals} from './src/Equals'
 export {EventHandler} from './src/EventHandler'
 export {EventHandlers} from './src/EventHandlers'
