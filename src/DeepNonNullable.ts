@@ -11,4 +11,5 @@ export type DeepNonNullable<T, K extends keyof T = keyof T> =
 //     }
 // }> = {} as any
 //
-// const d: 'd' = a.b.c.d
+// let d = a.b.c.d
+// d = 'a'

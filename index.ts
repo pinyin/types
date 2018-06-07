@@ -5,6 +5,7 @@ export type pct = number
 export type ratio = number
 
 export {DeepNonNullable} from './src/DeepNonNullable'
+export {DeepReadonly} from './src/DeepReadonly'
 export {Equals} from './src/Equals'
 export {EventHandler} from './src/EventHandler'
 export {EventHandlers} from './src/EventHandlers'
