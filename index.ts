@@ -4,6 +4,8 @@ export type rad = number
 export type pct = number
 export type ratio = number
 
+export type timestamp = string
+
 export {DeepNonNullable} from './src/DeepNonNullable'
 export {DeepReadonly} from './src/DeepReadonly'
 export {Equals} from './src/Equals'
