@@ -1,7 +1,7 @@
 import {primitive} from './primitive'
 
 export type Serializable =
-    primitive |
-    Iterable<primitive> |
+    Exclude<primitive, symbol> |
+    Iterable<Exclude<primitive, symbol>> |
     { [name: string]: Serializable }
 
