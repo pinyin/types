@@ -1,2 +1,3 @@
 # types
-Type aliases.
+
+Type helpers.

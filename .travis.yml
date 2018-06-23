@@ -1,0 +1,14 @@
+language: node_js
+cache:
+  directories:
+  - $HOME/.npm
+install:
+- npm ci
+deploy:
+  provider: npm
+  email: bob432091@gmail.com
+  skip_cleanup: true
+  api_key: $NPM_API_KEY
+  on:
+    tags: true
+    all_branches: true

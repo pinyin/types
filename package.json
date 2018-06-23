@@ -1,16 +1,17 @@
 {
   "name": "@pinyin/types",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Useful types",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "sideEffects": false,
   "scripts": {
     "prepublishOnly": "rm -rf dist && npx tsc",
-    "test": "npx jest"
+    "test": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,34 @@
   },
   "homepage": "https://github.com/pinyin/types#readme",
   "devDependencies": {
+    "@types/jest": "^23.1.1",
+    "jest": "^23.1.0",
+    "ts-jest": "^22.4.6",
     "typescript": "^2.9.0-dev.20180518"
+  },
+  "jest": {
+    "roots": [
+      "src",
+      "lib",
+      "vendor"
+    ],
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "verbose": true,
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    }
   }
 }
