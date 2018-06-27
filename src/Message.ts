@@ -6,3 +6,5 @@ export type Message<S extends object, K extends keyof S = keyof S> = {
         payload: S[key]
     }
 }[K]
+
+export type PayloadOf<M extends Message<any>> = M['payload']
