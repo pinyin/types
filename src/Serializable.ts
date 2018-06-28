@@ -1,7 +1,6 @@
-import {primitive} from './primitive'
-
 export type Serializable =
-    Exclude<primitive, symbol> |
-    Iterable<Exclude<primitive, symbol>> |
+    number | string | boolean |
+    List |
     { [name: string]: Serializable }
 
+interface List extends Array<Serializable> {}
