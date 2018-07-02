@@ -14,7 +14,7 @@ describe(`${matchMessage.name}`, () => {
     const b: Msg = {type: 'b', payload: 'b'}
     const c: Msg = {type: 'c', payload: 1}
 
-    it(`should match actionTypes`, () => {
+    it(`should match message types`, () => {
         function match(msg: Msg) {
             return matchMessage<A, number>(msg)
                 .a(payload => 1)
