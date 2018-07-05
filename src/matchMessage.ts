@@ -10,7 +10,7 @@ export function matchMessage<A extends TagMap, B>(message: Message<A>,
         tags.forEach(tag =>
             target[tag] = (matched: (payload: TagMap[TagOf<A>]) => B) => {
                 if (message.type === tag as any) {
-                    target[Default] = matched(message.payload)
+                    result = matched(message.payload)
                 }
                 return target
             }
