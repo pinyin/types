@@ -1,4 +1,4 @@
-import {MatchTag} from './MatchTag'
+import {ExtractByTag} from './ExtractByTag'
 import {Tag} from './Tag'
 import {Tagged} from './Tagged'
 import {TagKey} from './TagKey'
@@ -6,6 +6,6 @@ import {TagKey} from './TagKey'
 export function tagMatches<U extends Tagged, T extends Tag>(
     item: U,
     tag: T
-): item is MatchTag<U, T> {
+): item is ExtractByTag<U, T> {
     return item[TagKey] === tag
 }
