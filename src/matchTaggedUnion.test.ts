@@ -1,25 +1,25 @@
-import {Default, matchMessage} from './matchMessage'
-import {Message} from './Message'
+import {Default, matchTaggedUnion} from './matchTaggedUnion'
+import {TaggedUnion} from './TaggedUnion'
 
-describe(`${matchMessage.name}`, () => {
+describe(`${matchTaggedUnion.name}`, () => {
     type A = {
         a: 'a'
         b: 'b'
         c: 1
     }
 
-    type Msg = Message<A>
+    type Msg = TaggedUnion<A>
 
-    const a: Msg = {type: 'a', payload: 'a'}
-    const b: Msg = {type: 'b', payload: 'b'}
-    const c: Msg = {type: 'c', payload: 1}
+    const a: Msg = {type: 'a', content: 'a'}
+    const b: Msg = {type: 'b', content: 'b'}
+    const c: Msg = {type: 'c', content: 1}
 
     it(`should match message types by name`, () => {
         function match(msg: Msg) {
-            return matchMessage<A, number>(msg, ['a', 'b', 'c'])
-                .a(payload => 1)
-                .b(payload => 2)
-                .c(payload => payload + 2)
+            return matchTaggedUnion<A, number>(msg, ['a', 'b', 'c'])
+                .a(content => 1)
+                .b(content => 2)
+                .c(content => content + 2)
                 [Default](4)
         }
         expect(match(a)).toEqual(1)
@@ -30,10 +30,10 @@ describe(`${matchMessage.name}`, () => {
 
     it(`should match message types by Proxy`, () => {
         function match(msg: Msg) {
-            return matchMessage<A, number>(msg)
-                .a(payload => 1)
-                .b(payload => 2)
-                .c(payload => payload + 2)
+            return matchTaggedUnion<A, number>(msg)
+                .a(content => 1)
+                .b(content => 2)
+                .c(content => content + 2)
                 [Default](4)
         }
         expect(match(a)).toEqual(1)

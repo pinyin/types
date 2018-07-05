@@ -1,16 +1,16 @@
-import {Message} from './Message'
+import {TaggedUnion} from './TaggedUnion'
 import {TagMap} from './TagMap'
 import {TagOf} from './TagOf'
 
-export function matchMessage<A extends TagMap, B>(message: Message<A>,
-                                                  tags?: ReadonlyArray<TagOf<A>>): ActionMatcher<A, B> {
+export function matchTaggedUnion<A extends TagMap, B>(union: TaggedUnion<A>,
+                                                      tags?: ReadonlyArray<TagOf<A>>): ActionMatcher<A, B> {
     if (tags) {
         const target: any = {}
         let result: B = undefined as any
         tags.forEach(tag =>
-            target[tag] = (matched: (payload: TagMap[TagOf<A>]) => B) => {
-                if (message.type === tag as any) {
-                    result = matched(message.payload)
+            target[tag] = (matched: (content: TagMap[TagOf<A>]) => B) => {
+                if (union.type === tag as any) {
+                    result = matched(union.content)
                 }
                 return target
             }
@@ -24,9 +24,9 @@ export function matchMessage<A extends TagMap, B>(message: Message<A>,
                 if (tag === Default) {
                     return (value: B) => target[Default] === undefined ? value : target[Default]
                 } else {
-                    return (matched: (payload: TagMap[TagOf<A>]) => B) => {
-                        if (message.type === tag as any) {
-                            target[Default] = matched(message.payload)
+                    return (matched: (content: TagMap[TagOf<A>]) => B) => {
+                        if (union.type === tag as any) {
+                            target[Default] = matched(union.content)
                         }
                         return proxy
                     }
@@ -40,7 +40,7 @@ export function matchMessage<A extends TagMap, B>(message: Message<A>,
 export const Default = Symbol('Default')
 
 export type ActionMatcher<A extends TagMap, B, T extends TagOf<A> = TagOf<A>> = {
-    [type in T]: (matched: (payload: TagMap[type]) => B) => ActionMatcher<A, B, NonNullable<Exclude<T, type>>>
+    [type in T]: (matched: (content: TagMap[type]) => B) => ActionMatcher<A, B, NonNullable<Exclude<T, type>>>
 } & {
     [Default]: (value: B) => B
 }

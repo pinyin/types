@@ -2,13 +2,13 @@ import {IsNothing} from './IsNothing'
 import {nothing} from './nothing'
 import {TagKey} from './TagKey'
 
-export type Message<S extends object, K extends Exclude<keyof S, nothing> = Exclude<keyof S, nothing>> = {
+export type TaggedUnion<S extends object, K extends Exclude<keyof S, nothing> = Exclude<keyof S, nothing>> = {
     [key in K]: IsNothing<S[key]> extends true ?
-        { [TagKey]: key, payload?: nothing } :
-        { [TagKey]: key, payload: S[key] }
+        { [TagKey]: key, content?: nothing } :
+        { [TagKey]: key, content: S[key] }
 }[K]
 
-export type PayloadOf<M extends Message<any>> = M['payload']
+export type ContentOf<M extends TaggedUnion<any>> = M['content']
 
 // type S = {
 //     a: number
