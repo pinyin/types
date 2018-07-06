@@ -1,11 +1,8 @@
-import {IsNothing} from './IsNothing'
 import {nothing} from './nothing'
-import {TagKey} from './TagKey'
+import {Tagged} from './Tagged'
 
 export type TaggedUnion<S extends object, K extends Exclude<keyof S, nothing> = Exclude<keyof S, nothing>> = {
-    [key in K]: IsNothing<S[key]> extends true ?
-        { [TagKey]: key, content?: nothing } :
-        { [TagKey]: key, content: S[key] }
+    [key in K]: Tagged<key, S[key]>
 }[K]
 
 export type ContentOf<M extends TaggedUnion<any>> = M['content']
