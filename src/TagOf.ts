@@ -1,4 +1,4 @@
-import {TagMap} from './TagMap'
+import {Tagged} from './Tagged'
+import {TagKey} from './TagKey'
 
-export type TagOf<D extends TagMap> = NonNullable<keyof D>
-
+export type TagOf<M extends Tagged<any>> = M[TagKey]

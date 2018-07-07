@@ -5,8 +5,6 @@ export type TaggedUnion<S extends object, K extends Exclude<keyof S, nothing> = 
     [key in K]: Tagged<key, S[key]>
 }[K]
 
-export type ContentOf<M extends TaggedUnion<any>> = M['content']
-
 // type S = {
 //     a: number
 //     b?: string
