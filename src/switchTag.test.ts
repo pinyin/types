@@ -1,7 +1,7 @@
-import {Default, matchTaggedUnion} from './matchTaggedUnion'
+import {Default, switchTag} from './switchTag'
 import {TaggedUnion} from './TaggedUnion'
 
-describe(`${matchTaggedUnion.name}`, () => {
+describe(`${switchTag.name}`, () => {
     type A = {
         a: 'a'
         b: 'b'
@@ -16,7 +16,7 @@ describe(`${matchTaggedUnion.name}`, () => {
 
     it(`should match message types by name`, () => {
         function match(msg: Msg) {
-            return matchTaggedUnion<A, number>(msg, ['a', 'b', 'c'])
+            return switchTag<A, number>(msg, ['a', 'b', 'c'])
                 .a(content => 1)
                 .b(content => 2)
                 .c(content => content + 2)
@@ -30,7 +30,7 @@ describe(`${matchTaggedUnion.name}`, () => {
 
     it(`should match message types by Proxy`, () => {
         function match(msg: Msg) {
-            return matchTaggedUnion<A, number>(msg)
+            return switchTag<A, number>(msg)
                 .a(content => 1)
                 .b(content => 2)
                 .c(content => content + 2)

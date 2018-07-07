@@ -2,8 +2,8 @@ import {TaggedUnion} from './TaggedUnion'
 import {TagMap} from './TagMap'
 import {TagFromMap} from './TagFromMap'
 
-export function matchTaggedUnion<A extends TagMap, B>(union: TaggedUnion<A>,
-                                                      tags?: ReadonlyArray<TagFromMap<A>>): ActionMatcher<A, B> {
+export function switchTag<A extends TagMap, B>(union: TaggedUnion<A>,
+                                               tags?: ReadonlyArray<TagFromMap<A>>): ActionMatcher<A, B> {
     if (tags) {
         const target: any = {}
         let result: B = undefined as any
