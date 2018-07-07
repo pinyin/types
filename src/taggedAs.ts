@@ -4,8 +4,8 @@ import {Tagged} from './Tagged'
 import {TagKey} from './TagKey'
 
 export function taggedAs<U extends Tagged, T extends Tag>(
+    tag: T,
     item: U,
-    tag: T
 ): item is ExtractByTag<U, T> {
     return item[TagKey] === tag
 }
