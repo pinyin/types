@@ -1,7 +1,7 @@
 import {TagFromMap} from './TagFromMap'
 import {Tagged} from './Tagged'
 
-export type TaggedUnion<S extends object> = {
+export type TaggedByMap<S extends object> = {
     [key in TagFromMap<S>]: Tagged<key, S[key]>
 }[TagFromMap<S>]
 

@@ -1,6 +1,6 @@
 import {ContentKey} from './ContentKey'
 import {Default, switchTag} from './switchTag'
-import {TaggedUnion} from './TaggedUnion'
+import {TaggedByMap} from './TaggedByMap'
 import {TagKey} from './TagKey'
 
 describe(`${switchTag.name}`, () => {
@@ -10,7 +10,7 @@ describe(`${switchTag.name}`, () => {
         c: 1
     }
 
-    type Msg = TaggedUnion<A>
+    type Msg = TaggedByMap<A>
 
     const a: Msg = {[TagKey]: 'a', [ContentKey]: 'a'}
     const b: Msg = {[TagKey]: 'b', [ContentKey]: 'b'}

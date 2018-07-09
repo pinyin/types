@@ -1,13 +1,13 @@
 import {nothing} from '../nothing'
 import {ContentKey} from './ContentKey'
 import {TagFromMap} from './TagFromMap'
-import {TaggedUnion} from './TaggedUnion'
+import {TaggedByMap} from './TaggedByMap'
 import {TagKey} from './TagKey'
 import {TagMap} from './TagMap'
 import Maybe = jest.Maybe
 
 export function switchTag<A extends TagMap, B>(
-    union: TaggedUnion<A>,
+    union: TaggedByMap<A>,
     tags: Maybe<ReadonlyArray<TagFromMap<A>>> = nothing,
 ): ActionMatcher<A, B> {
     if (tags) {
