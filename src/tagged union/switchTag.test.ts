@@ -8,7 +8,7 @@ describe(`${switchTag.name}`, () => {
         c: 1
     }
 
-    type Msg = TaggedUnion<A>
+    type Msg = TaggedUnion<A, 'kind', 'content'>
 
     const a: Msg = {kind: 'a', content: 'a'}
     const b: Msg = {kind: 'b', content: 'b'}
