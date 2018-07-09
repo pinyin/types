@@ -1,4 +1,6 @@
 import {nothing} from '../nothing'
+import {DefaultContentKey} from './DefaultContentKey'
+import {DefaultTagKey} from './DefaultTagKey'
 import {ExtractByTag} from './ExtractByTag'
 import {taggedAs} from './taggedAs'
 import {TaggedUnion} from './TaggedUnion'
@@ -9,7 +11,7 @@ type U = {
     destroy: nothing
 }
 
-type TU = TaggedUnion<U>
+type TU = TaggedUnion<U, DefaultTagKey, DefaultContentKey>
 
 const add: ExtractByTag<TU, 'add'> = {kind: 'add', content: 1}
 

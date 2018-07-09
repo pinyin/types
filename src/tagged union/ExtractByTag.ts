@@ -5,7 +5,7 @@ import {Tag} from './Tag'
 import {Tagged} from './Tagged'
 import {TagKey} from './TagKey'
 
-export type ExtractByTag<D extends Tagged<Tag, any, any, any>,
+export type ExtractByTag<D extends Tagged<any, any, any, any>,
     T extends Tag,
     TK extends TagKey = DefaultTagKey,
     CK extends ContentKey = DefaultContentKey> = {

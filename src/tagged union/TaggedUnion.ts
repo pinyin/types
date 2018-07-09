@@ -1,11 +1,9 @@
 import {ContentKey} from './ContentKey'
-import {DefaultContentKey} from './DefaultContentKey'
-import {DefaultTagKey} from './DefaultTagKey'
 import {TagFromMap} from './TagFromMap'
 import {Tagged} from './Tagged'
 import {TagKey} from './TagKey'
 
-export type TaggedUnion<S extends object, TK extends TagKey = DefaultTagKey, CK extends ContentKey = DefaultContentKey> = {
+export type TaggedUnion<S extends object, TK extends TagKey, CK extends ContentKey> = {
     [key in TagFromMap<S>]: Tagged<key, S[key], TK, CK>
 }[TagFromMap<S>]
 
