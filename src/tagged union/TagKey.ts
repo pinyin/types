@@ -1,0 +1,1 @@
+export type TagKey = string | symbol

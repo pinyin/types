@@ -10,9 +10,9 @@ describe(`${switchTag.name}`, () => {
 
     type Msg = TaggedUnion<A>
 
-    const a: Msg = {type: 'a', content: 'a'}
-    const b: Msg = {type: 'b', content: 'b'}
-    const c: Msg = {type: 'c', content: 1}
+    const a: Msg = {kind: 'a', content: 'a'}
+    const b: Msg = {kind: 'b', content: 'b'}
+    const c: Msg = {kind: 'c', content: 1}
 
     it(`should match message types by name`, () => {
         function match(msg: Msg) {

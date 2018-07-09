@@ -1,19 +1,29 @@
-import {TaggedUnion} from './TaggedUnion'
-import {TagMap} from './TagMap'
+import {ContentKey} from './ContentKey'
+import {DefaultContentKey} from './DefaultContentKey'
+import {DefaultTagKey} from './DefaultTagKey'
 import {TagFromMap} from './TagFromMap'
+import {TaggedUnion} from './TaggedUnion'
+import {TagKey} from './TagKey'
+import {TagMap} from './TagMap'
 
-export function switchTag<A extends TagMap, B>(union: TaggedUnion<A>,
-                                               tags?: ReadonlyArray<TagFromMap<A>>): ActionMatcher<A, B> {
+export function switchTag<A extends TagMap,
+    B,
+    TK extends TagKey = DefaultTagKey,
+    CK extends ContentKey = DefaultContentKey>(union: TaggedUnion<A, TK, CK>,
+                                               tags?: ReadonlyArray<TagFromMap<A>>,
+                                               tagKey: TK = DefaultTagKey as TK,
+                                               contentKey: CK = DefaultContentKey as CK,
+): ActionMatcher<A, B> {
     if (tags) {
         const target: any = {}
         let result: B = undefined as any
         tags.forEach(tag =>
             target[tag] = (matched: (content: TagMap[TagFromMap<A>]) => B) => {
-                if (union.type === tag as any) {
-                    result = matched(union.content)
+                if (union[tagKey] === tag as any) {
+                    result = matched(union[contentKey])
                 }
                 return target
-            }
+            },
         )
         target[Default] = (value: B) =>
             result === undefined ? value : result
@@ -25,13 +35,13 @@ export function switchTag<A extends TagMap, B>(union: TaggedUnion<A>,
                     return (value: B) => target[Default] === undefined ? value : target[Default]
                 } else {
                     return (matched: (content: TagMap[TagFromMap<A>]) => B) => {
-                        if (union.type === tag as any) {
-                            target[Default] = matched(union.content)
+                        if (union[tagKey] === tag as any) {
+                            target[Default] = matched(union[contentKey])
                         }
                         return proxy
                     }
                 }
-            }
+            },
         })
         return proxy
     }
