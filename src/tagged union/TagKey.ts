@@ -1,2 +1,2 @@
-export type TagKey = 'tag'
-export const TagKey: TagKey = 'tag'
+export type TagKey = 'type'
+export const TagKey: TagKey = 'type'
