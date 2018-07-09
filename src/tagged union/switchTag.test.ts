@@ -1,5 +1,7 @@
+import {ContentKey} from './ContentKey'
 import {Default, switchTag} from './switchTag'
 import {TaggedUnion} from './TaggedUnion'
+import {TagKey} from './TagKey'
 
 describe(`${switchTag.name}`, () => {
     type A = {
@@ -8,11 +10,11 @@ describe(`${switchTag.name}`, () => {
         c: 1
     }
 
-    type Msg = TaggedUnion<A, 'kind', 'content'>
+    type Msg = TaggedUnion<A>
 
-    const a: Msg = {kind: 'a', content: 'a'}
-    const b: Msg = {kind: 'b', content: 'b'}
-    const c: Msg = {kind: 'c', content: 1}
+    const a: Msg = {[TagKey]: 'a', [ContentKey]: 'a'}
+    const b: Msg = {[TagKey]: 'b', [ContentKey]: 'b'}
+    const c: Msg = {[TagKey]: 'c', [ContentKey]: 1}
 
     it(`should match message types by name`, () => {
         function match(msg: Msg) {
@@ -22,6 +24,7 @@ describe(`${switchTag.name}`, () => {
                 .c(content => content + 2)
                 [Default](4)
         }
+
         expect(match(a)).toEqual(1)
         expect(match(b)).toEqual(2)
         expect(match(c)).toEqual(3)
@@ -36,6 +39,7 @@ describe(`${switchTag.name}`, () => {
                 .c(content => content + 2)
                 [Default](4)
         }
+
         expect(match(a)).toEqual(1)
         expect(match(b)).toEqual(2)
         expect(match(c)).toEqual(3)

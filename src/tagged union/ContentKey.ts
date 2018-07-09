@@ -1,1 +1,2 @@
-export type ContentKey = string | symbol
+export type ContentKey = 'content'
+export const ContentKey: ContentKey = 'content'

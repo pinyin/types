@@ -1,5 +1,6 @@
+import {ContentKey} from './ContentKey'
 import {Tag} from './Tag'
+import {TagKey} from './TagKey'
 
-export type Tagged<T extends Tag, C, TK extends string | symbol, CK extends string | symbol> =
-    { [k in TK]: T } & { [ck in CK]: C }
+export type Tagged<T extends Tag, C> = { [TagKey]: T, [ContentKey]: C }
 

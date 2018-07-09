@@ -1,17 +1,11 @@
-import {ContentKeyOf} from './ContentKeyOf'
-import {DefaultTagKey} from './DefaultTagKey'
 import {ExtractByTag} from './ExtractByTag'
 import {Tag} from './Tag'
 import {Tagged} from './Tagged'
-import {TagKeyOf} from './TagKeyOf'
+import {TagKey} from './TagKey'
 
-export function taggedAs<U extends Tagged<Tag, any, any, any>,
-    T extends Tag,
-    TK extends TagKeyOf<U>,
-    CK extends ContentKeyOf<U>>(
+export function taggedAs<U extends Tagged<Tag, any>, T extends Tag>(
     item: U,
     tag: T,
-    tagKey: TK = DefaultTagKey as TK,
-): item is ExtractByTag<U, T, TK, CK> {
-    return item[tagKey] === tag as any
+): item is ExtractByTag<U, T> {
+    return item[TagKey] === tag
 }

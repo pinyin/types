@@ -1,9 +1,9 @@
 import {nothing} from '../nothing'
-import {DefaultContentKey} from './DefaultContentKey'
-import {DefaultTagKey} from './DefaultTagKey'
+import {ContentKey} from './ContentKey'
 import {ExtractByTag} from './ExtractByTag'
 import {taggedAs} from './taggedAs'
 import {TaggedUnion} from './TaggedUnion'
+import {TagKey} from './TagKey'
 
 type U = {
     add: number
@@ -11,20 +11,13 @@ type U = {
     destroy: nothing
 }
 
-type TU = TaggedUnion<U, DefaultTagKey, DefaultContentKey>
+type TU = TaggedUnion<U>
 
-const add: ExtractByTag<TU, 'add'> = {kind: 'add', content: 1}
-
-type Action = TaggedUnion<U, 'type', 'payload'>
-
-const addCustom: ExtractByTag<Action, 'add', 'type', 'payload'> = {
-    type: 'add', payload: 1,
-}
+const add: ExtractByTag<TU, 'add'> = {[TagKey]: 'add', [ContentKey]: 1}
 
 describe(`${taggedAs.name}`, () => {
     it(`should be able to discriminate tagged union`, () => {
         expect(taggedAs(add, 'add')).toBeTruthy()
-        expect(taggedAs(addCustom, 'add', 'type')).toBeTruthy()
         expect(taggedAs(add, 'add') ? add.content.toString() : 8).toEqual('1')
     })
 })

@@ -3,12 +3,7 @@ import {Tag} from './Tag'
 import {Tagged} from './Tagged'
 import {TagKey} from './TagKey'
 
-export function tagAs<T extends Tag,
-    C,
-    TK extends TagKey,
-    CK extends ContentKey>(tag: T,
-                           content: C,
-                           tagKey: TK,
-                           contentKey: CK): Tagged<T, C, TK, CK> {
-    return {[tagKey]: tag, [contentKey]: content} as Tagged<T, C, TK, CK>
+export function tagAs<T extends Tag, C>(tag: T,
+                                        content: C): Tagged<T, C> {
+    return {[TagKey]: tag, [ContentKey]: content} as Tagged<T, C>
 }

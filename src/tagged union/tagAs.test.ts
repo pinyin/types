@@ -3,7 +3,7 @@ import {tagAs} from './tagAs'
 
 describe(`${tagAs.name}`, () => {
     it(`should support custom keys`, () => {
-        expect(tagAs('a', nothing, 'type', 'payload')).toEqual({type: 'a', payload: null})
-        expect(tagAs('a', 'b', 'type', 'payload')).toEqual({type: 'a', payload: 'b'})
+        expect(tagAs('a', nothing)).toEqual({tag: 'a', content: null})
+        expect(tagAs('a', 'b')).toEqual({tag: 'a', content: 'b'})
     })
 })

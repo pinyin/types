@@ -1,26 +1,22 @@
+import {nothing} from '../nothing'
 import {ContentKey} from './ContentKey'
-import {DefaultContentKey} from './DefaultContentKey'
-import {DefaultTagKey} from './DefaultTagKey'
 import {TagFromMap} from './TagFromMap'
 import {TaggedUnion} from './TaggedUnion'
 import {TagKey} from './TagKey'
 import {TagMap} from './TagMap'
+import Maybe = jest.Maybe
 
-export function switchTag<A extends TagMap,
-    B,
-    TK extends TagKey = DefaultTagKey,
-    CK extends ContentKey = DefaultContentKey>(union: TaggedUnion<A, TK, CK>,
-                                               tags?: ReadonlyArray<TagFromMap<A>>,
-                                               tagKey: TK = DefaultTagKey as TK,
-                                               contentKey: CK = DefaultContentKey as CK,
+export function switchTag<A extends TagMap, B>(
+    union: TaggedUnion<A>,
+    tags: Maybe<ReadonlyArray<TagFromMap<A>>> = nothing,
 ): ActionMatcher<A, B> {
     if (tags) {
         const target: any = {}
         let result: B = undefined as any
         tags.forEach(tag =>
             target[tag] = (matched: (content: TagMap[TagFromMap<A>]) => B) => {
-                if (union[tagKey] === tag as any) {
-                    result = matched(union[contentKey])
+                if (union[TagKey] === tag as any) {
+                    result = matched(union[ContentKey])
                 }
                 return target
             },
@@ -35,8 +31,8 @@ export function switchTag<A extends TagMap,
                     return (value: B) => target[Default] === undefined ? value : target[Default]
                 } else {
                     return (matched: (content: TagMap[TagFromMap<A>]) => B) => {
-                        if (union[tagKey] === tag as any) {
-                            target[Default] = matched(union[contentKey])
+                        if (union[TagKey] === tag as any) {
+                            target[Default] = matched(union[ContentKey])
                         }
                         return proxy
                     }
