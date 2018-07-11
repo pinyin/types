@@ -4,11 +4,10 @@ import {TagFromMap} from './TagFromMap'
 import {TaggedByMap} from './TaggedByMap'
 import {TagKey} from './TagKey'
 import {TagMap} from './TagMap'
-import Maybe = jest.Maybe
 
 export function switchTag<A extends TagMap, B>(
     union: TaggedByMap<A>,
-    tags: Maybe<ReadonlyArray<TagFromMap<A>>> = nothing,
+    tags: ReadonlyArray<TagFromMap<A>> | null = nothing,
 ): ActionMatcher<A, B> {
     if (tags) {
         const target: any = {}
