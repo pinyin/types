@@ -16,7 +16,7 @@ export {IsAny} from './src/IsAny'
 export {ObjExclude} from './src/ObjExclude'
 export {primitive} from './src/primitive'
 export {Promised} from './src/Promised'
-export {Serializable} from './src/Serializable'
+export {JSONObject} from './src/JSONObject'
 export {ShapeOf} from './src/ShapeOf'
 
 export {nothing} from './src/nothing'
