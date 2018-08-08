@@ -6,10 +6,10 @@ type Func = (p1: number, p2: string, p3: boolean, p4: any) => void
 type P = ParamsOf<Func>
 let p: P = '' as any
 
-// typings: expect-error
+// typings:expect-error
 p[0] === ''
 p[0] === 0
-// typings: expect-error
+// typings:expect-error
 p[1] === 0
 p[1] === ''
 p[2] === true

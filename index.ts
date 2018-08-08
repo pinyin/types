@@ -18,6 +18,7 @@ export {primitive} from './src/primitive'
 export {Promised} from './src/Promised'
 export {JSONObject} from './src/JSONObject'
 export {ShapeOf} from './src/ShapeOf'
+export {ParamsOf} from './src/ParamsOf'
 
 export {nothing} from './src/nothing'
 export {something} from './src/something'
