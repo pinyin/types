@@ -6,7 +6,7 @@ export type ratio = number
 
 export type timestamp = string
 
-export {DeepNonNullable} from './src/DeepNonNullable'
+export {DeepRequired} from './src/DeepRequired'
 export {DeepReadonly} from './src/DeepReadonly'
 export {Equals} from './src/Equals'
 export {EventHandler} from './src/EventHandler'
